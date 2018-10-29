@@ -10,7 +10,6 @@ var response;
 var topics = ["Toronto", "Seattle", "Chicago", "Los Angeles", "New York",
     "Jakarta", "Amsterdam", "Milan", "Paris", "Tokyo", "Beijing"]
 
-
 // render buttons based on topics array 
 function renderButtons() {
     for (var i = 0; i < topics.length; i++) {
@@ -27,11 +26,11 @@ function renderButtons() {
     }
 }
 
-
 // on-load events
 $(document).ready(function () {
     renderButtons();
 });
+
 // topic click event 
 $("body").on("click", ".topicButton", function () {
     // get the topic of button clicked 
@@ -46,8 +45,12 @@ $("body").on("click", ".topicButton", function () {
     }).then(function (result) {
         // grab response data and place in var 
         var gifData = result.data;
+        console.log(gifData);
         // loop through each and grab the correct img src string 
         for (var i = 0; i < gifData.length; i++) {
+            // get the rating of the image 
+            var rating = gifData[i].rating; 
+            rating = "Rated: " + rating; 
             // get the image source of the animated gif 
             var imgSrc = gifData[i].images.fixed_height.url;
             console.log(imgSrc);
@@ -62,11 +65,17 @@ $("body").on("click", ".topicButton", function () {
                 "data-animate": imgSrc,
                 "data-state": "still"
             })
-            // place the image
-            imgElement.appendTo("#mainImgContainer");
-            // once the image is loaded, show it. 
-            // imgElement.on("load", function() {
-            // imgElement.removeClass("d-none");
+            // create a div to hold the image, then add rating, then add image
+            var newDiv = $("<div>");
+            newDiv.addClass("d-flex flex-column rating");
+            // create a span 
+            var newSpan = $("<span>");
+            newSpan.text(rating);
+            // add span & image to div
+            newDiv.append(newSpan);
+            newDiv.append(imgElement);
+            // place the div 
+            newDiv.appendTo("#mainImgContainer");
         }
     })
 })

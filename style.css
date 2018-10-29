@@ -1,3 +1,11 @@
 .container {
     width: 100%; 
 }
+
+.rating {
+    text-transform: uppercase;
+}
+
+.rating span {
+    margin-left: 5px; 
+}
