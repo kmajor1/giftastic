@@ -50,15 +50,17 @@ $("body").on("click", ".topicButton", function () {
         // loop through each and grab the correct img src string 
         for (var i = 0; i < gifData.length; i++) {
             // get the image source of the animated gif 
-            var imgSrc = gifData[i].images.fixed_height.url;
+            var imgSrc = gifData[i].images.fixed_width.url;
             console.log(imgSrc);
             // get the image source of the still gif 
-            var imgSrcStill = gifData[i].images.fixed_height_still.url;
+            var imgSrcStill = gifData[i].images.fixed_width_still.url;
             console.log(imgSrcStill);
             // create an image element 
             var imgElement = $("<img>", {
                 "src": imgSrcStill,
-                "class": "gifImg m-1 border border-secondary"
+                "class": "gifImg m-1 border border-secondary",
+                "data-still": imgSrcStill,
+                "data-animate": imgSrc
             })
             imgElement.appendTo("#mainImgContainer");
 
