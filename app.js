@@ -12,6 +12,9 @@ var topics = ["Toronto", "Seattle", "Chicago", "Los Angeles", "New York",
 
 // render buttons based on topics array 
 function renderButtons() {
+    // empty button container 
+    document.getElementById("buttonContainer").innerText = ""; 
+    // document.getElementsByName.innerHTML = "<h1>Click to find Gifs!</h1>";
     for (var i = 0; i < topics.length; i++) {
         // create a button with the topic text and custom class
         var button = $("<button>").text(topics[i]).addClass("topicButton");
@@ -60,16 +63,17 @@ $("body").on("click", ".topicButton", function () {
             // create an image element 
             var imgElement = $("<img>", {
                 "src": imgSrcStill,
-                "class": "gifImg m-1 border border-secondary",
+                "class": "gifImg m-1",
                 "data-still": imgSrcStill,
                 "data-animate": imgSrc,
                 "data-state": "still"
             })
             // create a div to hold the image, then add rating, then add image
             var newDiv = $("<div>");
-            newDiv.addClass("d-flex flex-column rating");
+            newDiv.addClass("d-flex flex-column align-items-start rating m-2 gifContainer");
             // create a span 
             var newSpan = $("<span>");
+            newSpan.addClass("badge badge-info")
             newSpan.text(rating);
             // add span & image to div
             newDiv.append(newSpan);
@@ -98,5 +102,16 @@ $("body").on("click", ".gifImg", function () {
     }
 }
 )
+
+// new topic submit event 
+$("#submitNewTopic").on("click", function (event) {
+    // grab the text of the user input 
+    // prevent default behaviour of click? 
+    // event.preventDefault(); 
+    var userTopic = document.getElementById("newTopicInput").value;
+    // add topic to array
+    topics.push(userTopic);
+    renderButtons(); 
+})
 
 

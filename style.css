@@ -1,5 +1,19 @@
 .container {
-    width: 100%; 
+    width: 95%; 
+}
+
+#newTopicInput {
+
+}
+
+#newTopicInput label {
+    
+}
+
+
+
+div.gifContainer  img {
+    border: 2px solid black; 
 }
 
 .rating {
