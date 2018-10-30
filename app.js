@@ -6,6 +6,10 @@ var limit = 10;
 // result data
 var response;
 // global image source variables 
+var mq = window.matchMedia("(min-width: 450px)");
+console.log(mq);
+var isFH = false; 
+
 
 // topics array 
 var topics = ["Donald Trump", "Colbert", "Clinton", "Russia", "Robert Mueller",
@@ -55,38 +59,40 @@ $("body").on("click", ".topicButton", function () {
         }
         // grab response data and place in var 
         var gifData = result.data;
-        console.log(gifData);
         // loop through each and grab the correct img src string 
         for (var i = 0; i < gifData.length; i++) {
             // get the rating of the image 
             var rating = gifData[i].rating; 
             rating = "Rated: " + rating; 
-            // get the image source of the animated gif depending on media size
-            if (window.matchMedia("(min-width: 450px)").matches) {
-                var imgSrc = gifData[i].images.fixed_height.url;
-                console.log("chose fixed height");
+            // get all the image URLs needed both fixed width and fixed height for mobile responsiveness 
+            var imgSrcFH = gifData[i].images.fixed_height.url;
+            var imgSrcFW = gifData[i].images.fixed_width.url;
+            var imgSrcStillFH = gifData[i].images.fixed_height_still.url;
+            var imgSrcStillFW = gifData[i].images.fixed_width_still.url; 
+            // check the current value of the isFH variable 
+            if (isFH) {
+                var imgSrc = imgSrcFH; 
+                var imgSrcStill = imgSrcStillFH; 
             }
             else {
-                var imgSrc = gifData[i].images.fixed_width.url;
-                console.log("chose fixed width");
+                var imgSrc = imgSrcFW;
+                var imgSrcStill = imgSrcStillFW; 
             }
-            console.log(imgSrc);
-            // get the image source of the still gif depending on media size
-            if (window.matchMedia("(min-width: 450px)").matches) {
-                var imgSrcStill = gifData[i].images.fixed_height_still.url;
-            }
-            else {
-                var imgSrcStill = gifData[i].images.fixed_width_still.url; 
-            }
-            console.log(imgSrcStill);
+            
             // create an image element 
             var imgElement = $("<img>", {
                 "src": imgSrcStill,
                 "class": "gifImg m-1",
                 "data-still": imgSrcStill,
                 "data-animate": imgSrc,
-                "data-state": "still"
+                "data-state": "still",
+                "data-stillFW": imgSrcStillFW,
+                "data-stillFH": imgSrcStillFH, 
+                "data-animateFW": imgSrcFW,
+                "data-animateFH": imgSrcFH 
+                
             })
+            // depending on images initially loaded, store proper attributes 
             // create a div to hold the image, then add rating, then add image
             var newDiv = $("<div>");
             newDiv.addClass("d-flex flex-column align-items-start rating m-2 gifContainer");
@@ -133,11 +139,49 @@ $("#submitNewTopic").on("click", function (event) {
 })
 // put a listener for media changes (responsive)
 
-function reDraw () {
+function imgType (mq) {
+    if (mq.matches) {
+        isFH = true; 
+        // loop through any existing gif images and changed the source accordingly 
+        $.each($(".gifImg"), function (indexInArray, valueOfElement) { 
+            // check state of image 
+            var imgState = $(this).attr("data-state");
+            if (imgState == "still") {
+                var imgSrcNew =  $(this).attr("data-stillFH");
+                $(this).attr("src", imgSrcNew);
+            }
+            else {
+                var imgSrcNew = $(this).attr("data-animateFH");
+                $(this).attr("src", imgSrcNew);
+            }
+            
+        });
+    }
+    else {
+        isFH = false; 
+        // loop through any existing gif images and changed the source accordingly 
+        $.each($(".gifImg"), function (indexInArray, valueOfElement) { 
+            // check state of image 
+            var imgState = $(this).attr("data-state");
+            if (imgState == "still") {
+                var imgSrcNew =  $(this).attr("data-stillFW");
+                $(this).attr("src", imgSrcNew);
+            }
+            else {
+                var imgSrcNew = $(this).attr("data-animateFW");
+                $(this).attr("src", imgSrcNew);
+            }
+            
+        });
+        
+    }
 
 }
 
 // test for check value 
 console.log(renderReplace);
+// run media query right away 
+imgType(mq); 
+mq.addListener(imgType);
 
 
