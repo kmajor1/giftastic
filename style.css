@@ -16,6 +16,10 @@ div.gifContainer  img {
     border: 2px solid black; 
 }
 
+div.gifContainer img:hover {
+    border: 2px solid red; 
+}
+
 .rating {
     text-transform: uppercase;
 }
