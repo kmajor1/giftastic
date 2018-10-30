@@ -5,6 +5,7 @@ var endPoint = "/v1/gifs/search?";
 var limit = 10;
 // result data
 var response;
+// global image source variables 
 
 // topics array 
 var topics = ["Donald Trump", "Colbert", "Clinton", "Russia", "Robert Mueller",
@@ -60,11 +61,23 @@ $("body").on("click", ".topicButton", function () {
             // get the rating of the image 
             var rating = gifData[i].rating; 
             rating = "Rated: " + rating; 
-            // get the image source of the animated gif 
-            var imgSrc = gifData[i].images.fixed_width.url;
+            // get the image source of the animated gif depending on media size
+            if (window.matchMedia("(min-width: 450px)").matches) {
+                var imgSrc = gifData[i].images.fixed_height.url;
+                console.log("chose fixed height");
+            }
+            else {
+                var imgSrc = gifData[i].images.fixed_width.url;
+                console.log("chose fixed width");
+            }
             console.log(imgSrc);
-            // get the image source of the still gif 
-            var imgSrcStill = gifData[i].images.fixed_width_still.url;
+            // get the image source of the still gif depending on media size
+            if (window.matchMedia("(min-width: 450px)").matches) {
+                var imgSrcStill = gifData[i].images.fixed_height_still.url;
+            }
+            else {
+                var imgSrcStill = gifData[i].images.fixed_width_still.url; 
+            }
             console.log(imgSrcStill);
             // create an image element 
             var imgElement = $("<img>", {
@@ -118,6 +131,11 @@ $("#submitNewTopic").on("click", function (event) {
     topics.push(userTopic);
     renderButtons(); 
 })
+// put a listener for media changes (responsive)
+
+function reDraw () {
+
+}
 
 // test for check value 
 console.log(renderReplace);
