@@ -7,8 +7,8 @@ var limit = 10;
 var response;
 
 // topics array 
-var topics = ["Toronto", "Seattle", "Chicago", "Los Angeles", "New York",
-    "Jakarta", "Amsterdam", "Milan", "Paris", "Tokyo", "Beijing"]
+var topics = ["Donald Trump", "Colbert", "Clinton", "Russia", "Robert Mueller",
+    "Abraham Lincoln", "Alec Baldwin", "Putin", "Jay-Z", "Beyonce", "Kimmel", "Toronto", "Raptors", "Dinosaurs",  "Angry", "Confused", "Tired", "Sick"]
 
 // render buttons based on topics array 
 function renderButtons() {
@@ -46,6 +46,12 @@ $("body").on("click", ".topicButton", function () {
             'api_key': apiKey
         })
     }).then(function (result) {
+        // get the render type checkbox value 
+        var isRenderReplaceChecked = document.getElementById("renderReplace").checked;
+        // if it is checked, clear the div first before placing in images 
+        if (!isRenderReplaceChecked) {
+            document.getElementById("mainImgContainer").innerHTML = ""; 
+        }
         // grab response data and place in var 
         var gifData = result.data;
         console.log(gifData);
@@ -78,13 +84,12 @@ $("body").on("click", ".topicButton", function () {
             // add span & image to div
             newDiv.append(newSpan);
             newDiv.append(imgElement);
+            if (renderReplace)
             // place the div 
-            newDiv.appendTo("#mainImgContainer");
+            newDiv.prependTo("#mainImgContainer");
         }
     })
 })
-
-
 
 // image click event 
 $("body").on("click", ".gifImg", function () {
@@ -113,5 +118,8 @@ $("#submitNewTopic").on("click", function (event) {
     topics.push(userTopic);
     renderButtons(); 
 })
+
+// test for check value 
+console.log(renderReplace);
 
 
