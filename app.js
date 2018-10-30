@@ -136,6 +136,7 @@ $("#submitNewTopic").on("click", function (event) {
     // add topic to array
     topics.push(userTopic);
     renderButtons(); 
+    document.getElementById("newTopicInput").value = '';
 })
 // put a listener for media changes (responsive)
 

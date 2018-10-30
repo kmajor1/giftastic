@@ -17,6 +17,9 @@
 </head>
 
 <body>
+    <header>
+        <h1>GifTastic!</h1>
+    </header>
     <!-- container starts -->
     <div class="container">
         <header>
@@ -41,12 +44,16 @@
         </div>
         <div class="row my-1 justify-content-center">
             <div id="renderOptions" class="d-flex flex-row flex-wrap">
-                <div class="form-check">
-                    <input class="form-check-input"  type="checkbox" value="" id="renderReplace">
-                    <label class="form-check-label" for="renderReplace">
-                        Keep adding images to this page! (Warning, page could get long. Do not used if bored at work!)
+                <div id="inputNewTopic">
+                <!-- <div class="form-check"> -->
+                    <span>Keep adding images to the page!</span>
+                    <label class="form-check-label switch" for="renderReplace">
+                            <input class="form-check-input"  type="checkbox" value="" id="renderReplace">
+                        <!-- Keep adding images to this page! (Warning, page can get very long & waste your time!) -->
+                        <span class="slider round"></span>
                     </label>
                 </div>
+                <!-- </div> -->
             </div>
         </div>
         <div class="row">
