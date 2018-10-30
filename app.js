@@ -61,10 +61,10 @@ $("body").on("click", ".topicButton", function () {
             var rating = gifData[i].rating; 
             rating = "Rated: " + rating; 
             // get the image source of the animated gif 
-            var imgSrc = gifData[i].images.fixed_height.url;
+            var imgSrc = gifData[i].images.fixed_width.url;
             console.log(imgSrc);
             // get the image source of the still gif 
-            var imgSrcStill = gifData[i].images.fixed_height_still.url;
+            var imgSrcStill = gifData[i].images.fixed_width_still.url;
             console.log(imgSrcStill);
             // create an image element 
             var imgElement = $("<img>", {
