@@ -12,8 +12,8 @@ var isFH = false;
 
 
 // topics array 
-var topics = ["Donald Trump", "Colbert", "Clinton", "Russia", "Robert Mueller",
-    "Abraham Lincoln", "Alec Baldwin", "Putin", "Jay-Z", "Beyonce", "Kimmel", "Toronto", "Raptors", "Dinosaurs",  "Angry", "Confused", "Tired", "Sick"]
+var topics = ["Donald Trump", "Clinton", "Angry", "Sad", "Tired", "Hopeful", "Progressive", "Happy", "Obama"];
+
 
 // render buttons based on topics array 
 function renderButtons() {
