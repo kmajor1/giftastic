@@ -28,13 +28,13 @@ header h1 {
     font-size: 80px; 
 }
 
-#newTopicInput {
+#inputNewTopic span {
+
+    font-size: 20px; 
 
 }
 
-#newTopicInput label {
-    
-}
+
 
 
 
@@ -59,8 +59,8 @@ div.gifContainer img:hover {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 54px;
+    height: 30px;
     margin-left: 5px; 
 }
   
@@ -87,8 +87,8 @@ div.gifContainer img:hover {
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 23px;
+    width: 23px;
     left: 4px;
     bottom: 4px;
     background-color: white;
