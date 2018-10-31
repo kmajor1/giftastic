@@ -24,7 +24,7 @@ function renderButtons() {
         // create a button with the topic text and custom class
         var button = $("<button>").text(topics[i]).addClass("topicButton");
         // add bootstrap class to button 
-        button.addClass("btn btn-outline-success");
+        button.addClass("btn btn-success");
         // add some margins between buttons 
         button.addClass("m-2");
         // set an attribute of data-topic equal to button text 

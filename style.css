@@ -2,7 +2,13 @@
 
 body {
     font-family: 'Permanent Marker', cursive;
+    background-color: #993399;
+    color: white; 
 }
+
+
+
+
 
 .row {
     margin-bottom: 15px; 
