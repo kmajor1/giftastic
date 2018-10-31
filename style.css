@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
+html {
+    font-size: 14pt; 
+}
+
 body {
     font-family: 'Permanent Marker', cursive;
-    background-color: #993399;
+    background-color: #6c2188;
     color: white; 
 }
 
@@ -29,7 +33,15 @@ header {
 
 header h1 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 80px; 
+    font-size: 75px; 
+}
+
+#newTopicInputRow {
+    font-size: 24px; 
+}
+
+.input-group {
+    font-size: 24px; 
 }
 
 #inputNewTopic {
@@ -39,7 +51,7 @@ header h1 {
 #inputNewTopic > span {
 
     display: inline-block; 
-    font-size: 20px;
+   
     height: 34px;  
     position: relative; 
     top: -11px; 
