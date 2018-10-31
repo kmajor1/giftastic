@@ -12,7 +12,7 @@ var isFH = false;
 
 
 // topics array 
-var topics = ["Donald Trump", "Clinton", "Angry", "Sad", "Tired", "Hopeful", "Progressive", "Happy", "Obama"];
+var topics = ["Trump","Tired Baby", "Kanye", "Crazy", "Obama", "What Happened?"];
 
 
 // render buttons based on topics array 
