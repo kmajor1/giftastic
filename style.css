@@ -6,6 +6,10 @@ body {
     color: white; 
 }
 
+.buttonContainer {
+    font-size: 20px; 
+}
+
 
 
 
@@ -28,9 +32,18 @@ header h1 {
     font-size: 80px; 
 }
 
-#inputNewTopic span {
+#inputNewTopic {
+    vertical-align: center; 
+}
 
-    font-size: 20px; 
+#inputNewTopic > span {
+
+    display: inline-block; 
+    font-size: 20px;
+    height: 34px;  
+    position: relative; 
+    top: -11px; 
+
 
 }
 
@@ -59,9 +72,10 @@ div.gifContainer img:hover {
 .switch {
     position: relative;
     display: inline-block;
-    width: 54px;
-    height: 30px;
+    width: 60px;
+    height: 34px;
     margin-left: 5px; 
+    line-height: 0px;
 }
   
   /* Hide default HTML checkbox */
@@ -69,6 +83,7 @@ div.gifContainer img:hover {
     opacity: 0;
     width: 0;
     height: 0;
+
   }
   
   /* The slider */
@@ -87,8 +102,8 @@ div.gifContainer img:hover {
   .slider:before {
     position: absolute;
     content: "";
-    height: 23px;
-    width: 23px;
+    height: 26px;
+    width: 26px;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -119,10 +134,4 @@ div.gifContainer img:hover {
     border-radius: 50%;
   }
 
-  #inputNewTopic {
-      line-height: 0px;; 
-      font-size: 28px; 
-      margin-top: 5px; 
-      margin-bottom: 10px; 
-      vertical-align: baseline;
-  }
+  
